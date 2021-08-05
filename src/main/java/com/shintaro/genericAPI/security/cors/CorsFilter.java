@@ -1,4 +1,4 @@
-package com.shintaro.genericAPI.cors;
+package com.shintaro.genericAPI.security.cors;
 
 import java.io.IOException;
 

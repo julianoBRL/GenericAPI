@@ -1,4 +1,4 @@
-package com.shintaro.genericAPI.config;
+package com.shintaro.genericAPI.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

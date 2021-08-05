@@ -1,4 +1,4 @@
-package com.shintaro.genericAPI.config;
+package com.shintaro.genericAPI.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +29,11 @@ public class ResourseServerConfig extends ResourceServerConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.anyRequest().authenticated()
+				.antMatchers("/v2/api-docs",
+                "/swagger-resources/**",
+                "/swagger-ui.html",
+                "/webjars/**").permitAll()
+				.antMatchers("/*").authenticated()
 			.and()
 				.httpBasic()
 			.and()

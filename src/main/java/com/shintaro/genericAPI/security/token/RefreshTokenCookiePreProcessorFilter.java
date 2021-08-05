@@ -1,4 +1,4 @@
-package com.shintaro.genericAPI.token;
+package com.shintaro.genericAPI.security.token;
 
 import java.io.IOException;
 import java.util.Map;

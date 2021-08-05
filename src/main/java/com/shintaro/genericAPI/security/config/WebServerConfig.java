@@ -1,4 +1,4 @@
-package com.shintaro.genericAPI.config;
+package com.shintaro.genericAPI.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
