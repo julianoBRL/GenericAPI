@@ -1,4 +1,4 @@
-package com.shintaro.genericAPI.utils;
+package com.shintaro.genericAPI.security.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
