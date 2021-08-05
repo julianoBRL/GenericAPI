@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @javax.persistence.Entity
-@Table(name = "Users")
+@Table(name = "User")
 public class UserEntity extends Entity{
 	
 	@NotNull
