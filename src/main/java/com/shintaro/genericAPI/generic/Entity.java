@@ -9,6 +9,9 @@ import javax.persistence.MappedSuperclass;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @MappedSuperclass
 public class Entity {
 
@@ -19,6 +22,8 @@ public class Entity {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
 	@Type(type="org.hibernate.type.UUIDCharType")
+	@Getter
+	@Setter
     public UUID id;
 
 }
