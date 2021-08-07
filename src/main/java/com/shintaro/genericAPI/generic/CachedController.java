@@ -1,6 +1,14 @@
 package com.shintaro.genericAPI.generic;
 
+/*
+ * By: Juliano Lira(ShintaroBRL) 
+ * 
+ */
+
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -11,6 +19,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 public interface CachedController<
@@ -61,6 +70,40 @@ public interface CachedController<
 	default ResponseEntity<?> edit(@PathVariable("id") UUID ID, @RequestBody entity model){
 		updateCache();
 		return ResponseEntity.status(HttpStatus.OK).body(getService().edit(ID,model));
+	}
+	
+	@DeleteMapping("/cache")
+	default ResponseEntity<?> cache() {
+		getSingletron().clearCache();
+		return ResponseEntity.status(HttpStatus.OK).body(getSingletron().getCache());
+	}
+	
+	@GetMapping("/filter")
+	default ResponseEntity<?> filter(@RequestParam Map<String, String> params){
+		verifyCache();
+		
+		boolean reverseFilter = (params.containsKey("reverse"))? params.get("reverse") != null : false ;
+		
+		List<entity> cachedDupData = new ArrayList<entity>(getSingletron().getCache());
+		
+		params.forEach((key, value) -> {
+				cachedDupData.removeIf(data -> {
+					try {
+						Field field = data.getClass().getDeclaredField(key);
+						field.setAccessible(true);
+						
+						if(reverseFilter)
+							return field.get(data).equals(value);
+						
+						return !field.get(data).equals(value);
+					} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+						return false;
+					}
+					
+				});
+		});
+		
+		return ResponseEntity.status(HttpStatus.OK).body(cachedDupData);
 	}
 	
 	default void updateCache() {
