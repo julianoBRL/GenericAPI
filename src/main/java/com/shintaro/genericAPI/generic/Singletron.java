@@ -1,11 +1,15 @@
 package com.shintaro.genericAPI.generic;
 
+/*
+ * By: Juliano Lira(ShintaroBRL) 
+ * 
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
-
 
 public class Singletron<T extends Object> {
 	

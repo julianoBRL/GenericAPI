@@ -1,5 +1,10 @@
 package com.shintaro.genericAPI.generic;
 
+/*
+ * By: Juliano Lira(ShintaroBRL) 
+ * 
+ */
+
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;

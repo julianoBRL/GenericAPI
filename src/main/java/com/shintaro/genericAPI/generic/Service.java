@@ -1,5 +1,10 @@
 package com.shintaro.genericAPI.generic;
 
+/*
+ * By: Juliano Lira(ShintaroBRL) 
+ * 
+ */
+
 import java.util.List;
 import java.util.UUID;
 
