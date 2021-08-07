@@ -22,5 +22,19 @@ public class PropertyFilter {
 	    String[] result = new String[emptyNames.size()];
 	    return emptyNames.toArray(result);
 	}
+	
+	public static String[] getNotNullPropertyNames (Object source) {
+	    final BeanWrapper src = new BeanWrapperImpl(source);
+	    PropertyDescriptor[] pds = src.getPropertyDescriptors();
+
+	    Set<String> emptyNames = new HashSet<String>();
+	    for(PropertyDescriptor pd : pds) {
+	        Object srcValue = src.getPropertyValue(pd.getName());
+	        if (srcValue != null) emptyNames.add(pd.getName());
+	    }
+
+	    String[] result = new String[emptyNames.size()];
+	    return emptyNames.toArray(result);
+	}
 
 }
