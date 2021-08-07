@@ -21,5 +21,10 @@ public class Singletron<T extends Object> {
 		}
 		return singletron;
 	}
+	
+	public List<T> clearCache() {
+		cache = new ArrayList<>();
+		return cache;
+	}
 
 }
