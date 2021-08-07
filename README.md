@@ -1,17 +1,18 @@
 ﻿# GenericAPI 
 ﻿Basic API with the minimum necessary to create APIs with spring boot. It has generic interfaces being only necessary to use include.
 
-#included in
-Swagger2
-MySQL
+# Included in
+Swagger2/Swagger-UI
+MySQL Connector
 OAuth2
 JWT
+Lombok
 
-﻿#default user
+﻿# Default user
 User: Admin
 Password: Admin
 
-﻿#Credits:
+﻿# Credits:
 By: Juliano Lira(Shintaro)
 License:
 Contact: juliano0dev@gamil.com 
