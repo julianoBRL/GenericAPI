@@ -99,7 +99,7 @@ public interface CachedController<
 						return false;
 					}
 					
-				});
+				}); 
 		});
 		
 		return ResponseEntity.status(HttpStatus.OK).body(cachedDupData);
