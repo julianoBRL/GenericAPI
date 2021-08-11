@@ -1,12 +1,6 @@
 package com.shintaro.genericAPI.generic;
 
-/*
- * By: Juliano Lira(ShintaroBRL) 
- * 
- */
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.data.domain.PageImpl;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +11,7 @@ public class Singletron<T extends Object> {
 	
 	@Getter
 	@Setter
-	private List<T> cache = new ArrayList<>();
+	private PageImpl<T> cache = new PageImpl<T>(null);
 	
 	public static <T> Singletron<?> getInstance() {
 		if(singletron == null) {
@@ -26,8 +20,8 @@ public class Singletron<T extends Object> {
 		return singletron;
 	}
 	
-	public List<T> clearCache() {
-		cache = new ArrayList<>();
+	public PageImpl<T> clearCache() {
+		cache = new PageImpl<T>(null);
 		return cache;
 	}
 

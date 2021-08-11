@@ -33,13 +33,13 @@ public interface CachedController<
 	
 	@GetMapping
 	default ResponseEntity<?> getAll() {
-		verifyCache();
+		//verifyCache();
 		return ResponseEntity.status(HttpStatus.OK).body(getSingletron().getCache());
 	}
 	
 	@GetMapping("/{id}")
 	default ResponseEntity<?> getByID(@PathVariable("id") UUID ID) throws Exception {
-		verifyCache();
+		//verifyCache();
 		return ResponseEntity.status(HttpStatus.OK).body(getSingletron().getCache().stream().filter(data -> {
 			try {
 				Field idField = data.getClass().getSuperclass().getDeclaredField("id");
@@ -54,20 +54,20 @@ public interface CachedController<
 	
 	@PostMapping
 	default ResponseEntity<?> register(@RequestBody entity model){
-		updateCache();
+		//updateCache();
 		return ResponseEntity.status(HttpStatus.OK).body(getService().save(model));
 	}
 	
 	@DeleteMapping("/{id}")
 	default ResponseEntity<?> delete(@PathVariable("id") UUID ID){
-		updateCache();
+		//updateCache();
 		getService().delete(ID);
 		return ResponseEntity.status(HttpStatus.OK).body(getSingletron().getCache());
 	}
 	
 	@PatchMapping("/{id}")
 	default ResponseEntity<?> edit(@PathVariable("id") UUID ID, @RequestBody entity model){
-		updateCache();
+		//updateCache();
 		return ResponseEntity.status(HttpStatus.OK).body(getService().edit(ID,model));
 	}
 	
@@ -77,7 +77,7 @@ public interface CachedController<
 		return ResponseEntity.status(HttpStatus.OK).body(getSingletron().getCache());
 	}
 	
-	@GetMapping("/filter")
+	/*@GetMapping("/filter")
 	default ResponseEntity<?> filter(@RequestParam Map<String, String> params){
 		verifyCache();
 		
@@ -103,9 +103,9 @@ public interface CachedController<
 		});
 		
 		return ResponseEntity.status(HttpStatus.OK).body(cachedDupData);
-	}
+	}*/
 	
-	default void updateCache() {
+	/*default void updateCache() {
 		if(getSingletron().getCache().isEmpty()) {
 			verifyCache();
 		}
@@ -116,6 +116,6 @@ public interface CachedController<
 		if(getSingletron().getCache().isEmpty()) {
 			getSingletron().setCache(getService().list());
 		}
-	}
+	}*/
 
 }
