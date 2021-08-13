@@ -15,4 +15,4 @@ Password: Admin
 # Credits:
 By: Juliano Lira(Shintaro)<br>
 License: [License](https://github.com/ShintaroBRL/GenericAPI/blob/main/LICENSE)<br>
-Contact: juliano0dev@gamil.com 
+Contact: juliano0dev@gmail.com 
